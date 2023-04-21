@@ -1,0 +1,37 @@
+body {
+    background: rgb(84, 166, 201);
+
+}
+
+h2, h3{
+    color: rgb(249, 251, 228);
+    
+}
+
+h4{
+    color:lime;
+}
+
+h2{
+
+    margin-top: 10px;
+}
+
+h5 {
+    margin-top: 10px;
+}
+
+.battleButton {
+    height: 200px;
+    width: 200px;
+    font-size: 50px;
+    position: relative;
+    margin-top: 20px;
+    border-radius: 50%;
+    left: 40%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.stats{
+    margin-bottom: 3px;
+}
