@@ -82,7 +82,7 @@ class Characters(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return f"<Post {self.id}|{self.title}>"
+        return f"<Character {self.id}|{self.title}>"
 
     def to_dict(self):
         return {

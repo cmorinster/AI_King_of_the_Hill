@@ -17,14 +17,14 @@ export default function Battle() {
     }, [characterCurrent])
     
     
-    useEffect(() => {
-        fetch(`http://127.0.0.1:5000/api/champ`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setChamp(data);
-            })
-    }, [characterCurrent])
+    // useEffect(() => {
+    //     fetch(`http://127.0.0.1:5000/api/champ`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             setChamp(data);
+    //         })
+    // }, [characterCurrent])
     
     useEffect(() => {
         fetch(`http://127.0.0.1:5000/api/characters/${champCurrent}`)

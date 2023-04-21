@@ -1,5 +1,6 @@
 from flask import jsonify, request
 import os 
+from app import db
 # import base64
 # import requests
 import openai
@@ -170,8 +171,8 @@ def update_character(character_id):
 # Get champion
 @api.route('/champ')
 def get_champ():
-    results = select(Characters).where(Characters.champion == True).scalers().all()
-    return results
+    results = db.session.execute(db.select(Characters).where(Characters.champion == True)).scalars().all()
+    return jsonify(results.to_dict())
 
 
 # Delete a single character with id
