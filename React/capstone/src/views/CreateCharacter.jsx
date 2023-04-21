@@ -29,7 +29,7 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
         let agility = getRandomInt(9, 18);
         let speed = getRandomInt(9,18);
         let endurance = getRandomInt (9,18);
-        let health = getRandomInt (18,25);
+        let health = getRandomInt (23,25);
         let link = `${creature} ${action} in the style of ${art}`
 
         let token = localStorage.getItem('token')

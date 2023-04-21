@@ -68,13 +68,12 @@ export default function Battle() {
                         <p className='card-text stats'>Camoflague: {challenger.camoflague}</p>
                         <p className='card-text stats'>Intellegence: {challenger.intellegence}</p>
                         <p className='card-text stats'>Health: {challenger.health}</p>
+                        
+                    </div>
+                </div>
                         {winner=='challenger' && 
                         <h4>Winner!</h4>
                         }
-                    </div>
-                    
-                    
-                </div>
                 
                 
                 </div>
@@ -89,15 +88,12 @@ export default function Battle() {
                         <p className='card-text stats'>Endurance: {champion.endurance}</p>
                         <p className='card-text stats'>Camoflague: {champion.camoflague}</p>
                         <p className='card-text stats'>Intellegence: {champion.intellegence}</p>
-                        <p className='card-text stats'>Health: {champion.health}</p>
+                        <p className='card-text stats'>Health: {champion.health}</p>     
+                    </div>     
+                </div>
                         {winner=='champion' && 
                         <h4>Winner!</h4>
                         }
-                    </div>
-
-                    
-                    
-                </div>
             </div>
         </div>
         {(winner!= 'challenger' && winner!= 'champion') &&

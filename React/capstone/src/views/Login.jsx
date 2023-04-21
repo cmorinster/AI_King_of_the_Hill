@@ -40,7 +40,7 @@ export default function Login({ flashMessage, logUserIn }) {
 
             // flash a success message and redirect
             flashMessage('You have successully logged in', 'success');
-            navigate('/');
+            navigate('/create');
         };
 
     };

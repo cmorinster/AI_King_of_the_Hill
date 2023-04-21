@@ -36,7 +36,7 @@ export default function Register({ flashMessage }) {
                         //flashMessage(data.error, 'danger');
                     } else {
                         flashMessage(`${data.username} has been created`, 'success');
-                        navigate('/');
+                        navigate('/login');
                     }
                 })
         }

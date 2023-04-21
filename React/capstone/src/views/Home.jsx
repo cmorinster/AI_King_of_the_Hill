@@ -20,15 +20,23 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Welcome to the AI King of the Hill</h1>
-        <div className="card"><img src={champion.link}></img>
-                <div className="card-body">
-                        <h2>Current Champion:</h2>
-                        <h5 className="card-title">{champion.name}</h5>
+      <h1>Welcome to the AI Art King of the Hill</h1>
+      
+        <div className="card">
+          <img src={champion.link}></img>
+                <div className="card-body">  
+                  <h3>Current Champion:</h3>
+                  <h3 className="card-title">{champion.name}</h3>  
                 </div>
-                <Link className='btn btn-primary' to={`/register`}>Register</Link>
-                <Link className='btn btn-primary' to={`/login`}>Login</Link>
-                
+                  <h1 className="card-title beatThem">Think You Can Beat Them?</h1>  
+                <div className="row">
+                <div className="col">
+                <Link className='btn btn-primary left homeButton' to={`/register`}>Register</Link>
+                </div>
+                <div className="col">
+                <Link className='btn btn-primary right homeButton' to={`/login`}>Login</Link>
+                </div>
+                </div>
         </div>
 
 
