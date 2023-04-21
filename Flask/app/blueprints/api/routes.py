@@ -170,9 +170,8 @@ def update_character(character_id):
 # Get champion
 @api.route('/champ')
 def get_champ():
-    results = select(Characters).where(Characters.champion == True)
-    character = results.query
-    return character
+    results = select(Characters).where(Characters.champion == True).scalers().all()
+    return results
 
 
 # Delete a single character with id

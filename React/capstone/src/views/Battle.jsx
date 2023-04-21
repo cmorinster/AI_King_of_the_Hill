@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 export default function Battle() {
     const [challenger, setChallenger] = useState({});
+    const [champ, setChamp] = useState({});
     const [champion, setChampion] = useState({});
     const [winner, setWinner] = useState({});
     let champCurrent = localStorage.getItem('champId');
@@ -12,6 +13,16 @@ export default function Battle() {
             .then(data => {
                 console.log(data);
                 setChallenger(data);
+            })
+    }, [characterCurrent])
+    
+    
+    useEffect(() => {
+        fetch(`http://127.0.0.1:5000/api/champ`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setChamp(data);
             })
     }, [characterCurrent])
     

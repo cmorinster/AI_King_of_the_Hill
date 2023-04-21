@@ -22,13 +22,13 @@ export default function Home() {
     <div>
       <h1>Welcome to the AI Art King of the Hill</h1>
       
-        <div className="card">
-          <img src={champion.link}></img>
+        <div className="card homeCard">
+          <img src={champion.link} className="homeImg"></img>
                 <div className="card-body">  
                   <h3>Current Champion:</h3>
                   <h3 className="card-title">{champion.name}</h3>  
                 </div>
-                  <h1 className="card-title beatThem">Think You Can Beat Them?</h1>  
+                  <h2 className="card-title beatThem">{champion.name} says you smell bad! Think You Can Beat Them?</h2>  
                 <div className="row">
                 <div className="col">
                 <Link className='btn btn-primary left homeButton' to={`/register`}>Register</Link>
