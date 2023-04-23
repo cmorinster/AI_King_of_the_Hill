@@ -98,12 +98,17 @@ class Characters(db.Model):
             'health': self.health,
             'link': self.link,
             'date_created': self.date_created,
+            'wins': self.wins,
+            'champion': self.champion,
             'creator': User.query.get(self.user_id).to_dict()
         }
+    
+        
+        
 
     def update(self, data):
         for field in data:
-            if field not in {'name', 'type', 'strength', 'agility', 'intellegence', 'speed', 'endurance', 'camoflague', 'health', 'link', 'wins', 'champions' }:
+            if field not in {'name', 'type', 'strength', 'agility', 'intellegence', 'speed', 'endurance', 'camoflague', 'health', 'link', 'wins', 'champion' }:
                 continue
             setattr(self, field, data[field])
         db.session.commit()

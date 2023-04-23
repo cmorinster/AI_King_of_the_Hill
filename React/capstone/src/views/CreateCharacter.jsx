@@ -114,6 +114,7 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                     <option value="Narwhal">Narwhal</option>
                     <option value="Orc">Orc</option>
                     <option value="Otter">Otter</option>
+                    <option value="Pig">Pig</option>
                     <option value="Raccoon">Raccoon</option>
                     <option value="Robot">Robot</option>
                     <option value="Snake">Snake</option>
@@ -129,11 +130,13 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                 <h5>Action</h5>
                 <select className="form-select" name = "action">
                     <option value="Breathing Fire">Breathing Fire</option>
+                    <option value="Carrying groceries">Carrying Groceries</option>
                     <option value="Catching Fireflys With a Net">Catching Fireflys With a Net</option>
                     <option value="Directing Traffic">Directing Traffic</option>
                     <option value="Holding an Axe">Holding an Axe</option>
                     <option value="Holding Watermelons">Holding Watermelons</option>
                     <option value="In a Hot Air Balloon">In a Hot Air Balloon</option>
+                    <option value="In a trenchcoat">In a Trenchcoat</option>
                     <option value="Juggling Chainsaws">Juggling Chainsaws</option>
                     <option value="Lifting Weights">Lifting Weights</option>
                     <option value="Pushing a Wheelbarrow">Pushing a Wheelbarrow</option>
@@ -148,8 +151,8 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
             <div className="col-5">
              <h5>Art Style</h5>
                 <select className="form-select" name = "art">
-                    <option value="1940s style Cartoon">1940s style Cartoon</option>
-                    <option value="1990s style Advertisement">1990s style Advertisement</option>
+                    <option value="1940s style Comic Book">1940s style Comic Book</option>
+                    <option value="1980s style Cartoon">1990s style Cartoon</option>
                     <option value="Anime Portrait">Anime Portrait</option>
                     <option value="Cave painting">Cave painting</option>
                     <option value="Children's drawing">Children's drawing</option>
@@ -158,10 +161,13 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                     <option value="Graffiti">Graffiti</option>
                     <option value="On a Wanted Poster">On a Wanted Poster</option>
                     <option value="Oil Painting">Oil Painting</option>
+                    <option value="Picasso">Picasso</option>
                     <option value="Pixel Art">Pixel Art</option>
                     <option value="Pastel Drawing">Pastel Drawing</option>
                     <option value="Photograph">Photograph</option>
+                    <option value="Renaissance Painting">Renaissance Painting</option>
                     <option value="Ukiyo-e art">Ukiyo-e art</option>
+                    <option value="Van Gogh">Van Gogh</option>
                     <option value="Watercolour">Watercolour</option>
 
                 </select>

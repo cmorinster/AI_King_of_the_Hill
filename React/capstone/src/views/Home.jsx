@@ -3,18 +3,28 @@ import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [champion, setChampion] = useState({});
-    let champCurrent = localStorage.getItem('champId');
-    useEffect(() => {
-        fetch(`http://127.0.0.1:5000/api/characters/${champCurrent}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setChampion(data);
-            })
-    }, [champCurrent])
 
+    useEffect(() => {
+      fetch(`http://127.0.0.1:5000/api/champ`)
+          .then(res => res.json())
+          .then(data => {
+              console.log(data);
+              setChampion(data);
+          })
+  }, [champion])
     
 
+  //   let myHeaders = new Headers();
+  //   myHeaders.append('Content-Type', 'application/json');
+  //   let formData = JSON.stringify({
+  //     champion: false
+  // })
+
+  // fetch(`http://127.0.0.1:5000/api/characters/16`, {
+  //     method: 'PUT',
+  //     headers: myHeaders,
+  //     body: formData
+  // })
 
 
 

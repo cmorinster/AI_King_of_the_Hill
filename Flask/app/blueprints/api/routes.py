@@ -158,12 +158,8 @@ def get_character(character_id):
 
 # Update a single character with id
 @api.route('/characters/<int:character_id>', methods=['PUT'])
-@token_auth.login_required
 def update_character(character_id):
     character = Characters.query.get_or_404(character_id)
-    user = token_auth.current_user()
-    if user.id != character.user_id:
-        return jsonify({'error': 'You are not allowed to edit this character'}), 403
     data = request.json
     character.update(data)
     return jsonify(character.to_dict())
@@ -172,7 +168,11 @@ def update_character(character_id):
 @api.route('/champ')
 def get_champ():
     results = db.session.execute(db.select(Characters).where(Characters.champion == True)).scalars().all()
-    return jsonify(results.to_dict())
+    for chars in results:
+            if chars.champion == True:
+                champ = chars
+                break
+    return jsonify(champ.to_dict())
 
 
 # Delete a single character with id

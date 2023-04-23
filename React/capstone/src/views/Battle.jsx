@@ -2,10 +2,8 @@ import React, {useState, useEffect} from 'react'
 
 export default function Battle() {
     const [challenger, setChallenger] = useState({});
-    const [champ, setChamp] = useState({});
-    const [champion, setChampion] = useState({});
+    const [champ, setchamp] = useState({});
     const [winner, setWinner] = useState({});
-    let champCurrent = localStorage.getItem('champId');
     let characterCurrent = localStorage.getItem('charId');
     useEffect(() => {
         fetch(`http://127.0.0.1:5000/api/characters/${characterCurrent}`)
@@ -17,43 +15,37 @@ export default function Battle() {
     }, [characterCurrent])
     
     
-    // useEffect(() => {
-    //     fetch(`http://127.0.0.1:5000/api/champ`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setChamp(data);
-    //         })
-    // }, [characterCurrent])
-    
     useEffect(() => {
-        fetch(`http://127.0.0.1:5000/api/characters/${champCurrent}`)
+        fetch(`http://127.0.0.1:5000/api/champ`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setChampion(data);
+                setchamp(data);
             })
     }, [characterCurrent])
+    
 
     async function handleSubmit(e){ 
         e.preventDefault();
         let challengerTotal = (challenger.strength + challenger.agility + challenger.speed +challenger.camoflague + challenger.endurance + challenger.intellegence)/12;
-        let championTotal = (champion.strength + champion.agility + champion.speed +champion.camoflague + champion.endurance + champion.intellegence)/12;
-        let championHP = champion.health*15;
+        let champTotal = (champ.strength + champ.agility + champ.speed +champ.camoflague + champ.endurance + champ.intellegence)/12;
+        let champHP = champ.health*15;
         let challengerHP = challenger.health*15;
-        while (championHP > 0 && challengerHP > 0){
+        while (champHP > 0 && challengerHP > 0){
             let challengerRoll = getRandomInt(1, 5);
-            let championRoll = getRandomInt(1, 5);
-            championHP -= challengerTotal*challengerRoll;
-            challengerHP -= championTotal*championRoll;
+            let champRoll = getRandomInt(1, 5);
+            champHP -= challengerTotal*challengerRoll;
+            challengerHP -= champTotal*champRoll;
             console.log(challengerHP)
-            console.log(championHP)
+            console.log(champHP)
         }
-        if (challengerHP > championHP){
+        if (challengerHP > champHP){
             localStorage.setItem('champId', challenger.id)
             setWinner('challenger')
+            handleWinner('challenger')
         } else {
             setWinner('champion')
+            handleWinner('champion')
         }
         
     } 
@@ -63,6 +55,47 @@ export default function Battle() {
         return Math.floor(Math.random() * (max - min) + min)
     
     }
+
+    async function handleWinner(gg){
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        console.log(gg)
+        if (gg == 'champion') {
+            let formData = JSON.stringify({
+                wins: champ.wins + 1
+            })
+
+            fetch(`http://127.0.0.1:5000/api/characters/${champ.id}`, {
+                method: 'PUT',
+                headers: myHeaders,
+                body: formData
+            })
+            
+        } else {
+            let formData = JSON.stringify({
+                wins: 1,
+                champion: true
+            })
+
+            fetch(`http://127.0.0.1:5000/api/characters/${challenger.id}`, {
+                method: 'PUT',
+                headers: myHeaders,
+                body: formData
+            })
+
+            let formData2 = JSON.stringify({
+                champion: false
+            })
+
+            fetch(`http://127.0.0.1:5000/api/characters/${champ.id}`, {
+                method: 'PUT',
+                headers: myHeaders,
+                body: formData2
+            })
+        }
+
+    }
+
   return (
     <div>
         <form action="" onSubmit={handleSubmit}>
@@ -90,16 +123,16 @@ export default function Battle() {
                 </div>
             <div className="col-6">
             <div className="card mt-5">
-                    <img src={champion.link}></img>
+                    <img src={champ.link}></img>
                     <div className="card-body">
-                        <h5 className="card-title">{champion.name}</h5>
-                        <p className='card-text stats'>Strength: {champion.strength}</p>
-                        <p className='card-text stats'>Speed: {champion.speed}</p>
-                        <p className='card-text stats'>Agility: {champion.agility}</p>
-                        <p className='card-text stats'>Endurance: {champion.endurance}</p>
-                        <p className='card-text stats'>Camoflague: {champion.camoflague}</p>
-                        <p className='card-text stats'>Intellegence: {champion.intellegence}</p>
-                        <p className='card-text stats'>Health: {champion.health}</p>     
+                        <h5 className="card-title">{champ.name}</h5>
+                        <p className='card-text stats'>Strength: {champ.strength}</p>
+                        <p className='card-text stats'>Speed: {champ.speed}</p>
+                        <p className='card-text stats'>Agility: {champ.agility}</p>
+                        <p className='card-text stats'>Endurance: {champ.endurance}</p>
+                        <p className='card-text stats'>Camoflague: {champ.camoflague}</p>
+                        <p className='card-text stats'>Intellegence: {champ.intellegence}</p>
+                        <p className='card-text stats'>Health: {champ.health}</p>     
                     </div>     
                 </div>
                         {winner=='champion' && 
