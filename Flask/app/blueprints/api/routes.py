@@ -1,4 +1,5 @@
 from flask import jsonify, request
+import requests
 import os 
 from app import db
 # import base64
@@ -89,12 +90,11 @@ def me():
 @api.route('/characters', methods=['POST'])
 @token_auth.login_required
 def create_character(): 
-    print("hi")
     if not request.is_json:
         return jsonify({'error': 'Please send a body'}), 400
     data = request.json
     # Validate the data
-    for field in ['name', 'link', 'strength', 'agility', 'intellegence', 'speed', 'endurance', 'camoflague', 'health']:
+    for field in ['name', 'description','link', 'strength', 'agility', 'intellegence', 'speed', 'endurance', 'camoflague', 'health']:
         if field not in data:
             return jsonify({'error': f"You are missing the {field} field"}), 400
     current_user = token_auth.current_user()
@@ -172,7 +172,26 @@ def get_champ():
             if chars.champion == True:
                 champ = chars
                 break
-    return jsonify(champ.to_dict())
+    linkstat = requests.get(champ.link).status_code
+    print(linkstat)
+    if linkstat > 209:
+        response1 = openai.Image.create(
+        prompt= champ.description,
+        n=1,
+        size="1024x1024"
+        )
+        champ_char = (champ.to_dict())
+        print(champ_char)
+        print("hellO")
+        print(type(champ_char))
+        champ_char['link'] = response1['data'][0]['url']
+        print('here')
+        character = Characters.query.get_or_404(champ.id)
+        character.update(champ_char)
+        return jsonify(character.to_dict())
+    else:
+        print("hi")
+        return jsonify(champ.to_dict())
 
 
 # Delete a single character with id

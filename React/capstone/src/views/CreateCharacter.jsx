@@ -3,17 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-// let OPENAI_API_KEY = "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"
-// const OpenAI = require("openai");
-// const { Configuration, OpenAIApi } = OpenAI;
-//  const configuration = new Configuration({
-//   apiKey: OPENAI_API_KEY,
-//   formDataCtor: CustomFormData
-//  });
-// const openai = new OpenAIApi(configuration);
-
-
-
 export default function CreateCharacter({ loggedIn, flashMessage }) {
 
     const navigate = useNavigate();
@@ -30,14 +19,14 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
         let speed = getRandomInt(9,18);
         let endurance = getRandomInt (9,18);
         let health = getRandomInt (23,25);
-        let link = `${creature} ${action} in the style of ${art}`
-
-        let token = localStorage.getItem('token')
+        let description = `${creature} ${action} in the style of ${art}`;
+        let link = `${creature} ${action} in the style of ${art}`;
+        let token = localStorage.getItem('token');
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'application/json');
         myHeaders.append('Authorization', `Bearer ${token}`);
 
-        let requestBody = JSON.stringify({ name, link, strength, agility, intellegence, speed, endurance, camoflague, health})
+        let requestBody = JSON.stringify({ name, description, link, strength, agility, intellegence, speed, endurance, camoflague, health})
         console.log(requestBody)
         fetch('http://127.0.0.1:5000/api/characters', {
             method: 'POST',

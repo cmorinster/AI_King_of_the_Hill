@@ -71,6 +71,7 @@ class Characters(db.Model):
     camoflague = db.Column(db.Integer, nullable= False)
     health = db.Column(db.Integer, nullable= False)
     link = db.Column(db.String(500), nullable = False)
+    description = db.Column(db.String(200), nullable = False)
     champion = db.Column(db.Boolean, nullable = False, default = False)
     wins = db.Column(db.Integer, nullable = False, default = 0)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow )
@@ -97,6 +98,7 @@ class Characters(db.Model):
             'camoflague': self.camoflague,
             'health': self.health,
             'link': self.link,
+            'description': self.description,
             'date_created': self.date_created,
             'wins': self.wins,
             'champion': self.champion,
@@ -108,7 +110,7 @@ class Characters(db.Model):
 
     def update(self, data):
         for field in data:
-            if field not in {'name', 'type', 'strength', 'agility', 'intellegence', 'speed', 'endurance', 'camoflague', 'health', 'link', 'wins', 'champion' }:
+            if field not in {'name', 'type', 'strength', 'agility', 'intellegence', 'speed', 'endurance', 'camoflague', 'health', 'description', 'link', 'wins', 'champion' }:
                 continue
             setattr(self, field, data[field])
         db.session.commit()

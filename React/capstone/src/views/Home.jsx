@@ -11,10 +11,10 @@ export default function Home() {
               console.log(data);
               setChampion(data);
           })
-  }, [champion])
+  }, [])
     
 
-  //   let myHeaders = new Headers();
+  //   let myHeaders = new Headers();  issue is that we need to either look at the image once we get it and react if its bad or react when the image is bad upon its fetch
   //   myHeaders.append('Content-Type', 'application/json');
   //   let formData = JSON.stringify({
   //     champion: false
