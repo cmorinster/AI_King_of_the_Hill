@@ -77,3 +77,44 @@ h1{
     font-size: 20px;
 
 }
+
+.overlayImg{
+    z-index: 0;
+    position: relative;
+
+}
+
+.hitpoints{
+    color: red;
+   
+}
+
+.damage{
+    z-index: 1;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    font-size: 220px;
+    color: red;
+    font-family: 'Bloody Scary'
+}
+
+.winner{
+    z-index: 1;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-size: 120px;
+    color:rgb(70, 236, 73);
+    font-family:'Andale Mono Regular'
+}
+
+.damage_lose{
+    z-index: 1;
+    position: absolute;
+    top: 10%;
+    left: 3%;
+    font-size: 130px;
+    color: red;
+    font-family: 'Bloody Scary'
+}
