@@ -4,11 +4,13 @@ export default function Battle() {
     const [challenger, setChallenger] = useState({});
     const [champ, setchamp] = useState({});
     const [champDamage, setchampDamage] = useState(40);
+    const [story, setstory] = useState(null);
     const [challDamage, setchallDamage] = useState(40);
     const [champHealth, setchampHealth] = useState(30);
     const [challHealth, setchallHealth] = useState(30);
     const [buttonChecker, setbuttonChecker] = useState(true);
-    const [winner, setWinner] = useState({});
+    const [storyChecker, setstoryChecker] = useState(true);
+    const [winner, setWinner] = useState(null);
     let characterCurrent = localStorage.getItem('charId');
     useEffect(() => {
         fetch(`http://127.0.0.1:5000/api/characters/${characterCurrent}`)
@@ -73,6 +75,7 @@ export default function Battle() {
     async function handleWinner(gg){
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'application/json');
+
         console.log(gg)
         if (gg == 'champion') {
             let formData = JSON.stringify({
@@ -84,7 +87,13 @@ export default function Battle() {
                 headers: myHeaders,
                 body: formData
             })
-            
+            fetch(`http://127.0.0.1:5000/api/battle/${champ.id}/${challenger.id}`) 
+            .then(res => res.json())
+            .then(data => {
+            setstory(data);
+            })
+            .then (function(){return(setstoryChecker(false))});
+
         } else {
             let formData = JSON.stringify({
                 wins: 1,
@@ -106,8 +115,18 @@ export default function Battle() {
                 headers: myHeaders,
                 body: formData2
             })
-        }
 
+            fetch(`http://127.0.0.1:5000/api/battle/${challenger.id}/${champ.id}`) 
+               .then(res => res.json())
+               .then(data => {
+                setstory(data);
+                
+            })
+               .then (function(){return(setstoryChecker(false))});
+            
+
+        }
+       
     }
 
   return (
@@ -116,12 +135,12 @@ export default function Battle() {
         <div className="row">
             <div className="col-6">
                 <div className="card mt-5">
-                    <img className="overlayImg" src={challenger.link}></img>
+                    <img className="overlayImg" alt= "challenger" src={challenger.link}></img>
                     {((winner!= 'challenger' && winner!= 'champion')&&(challDamage!=40)) && 
                         <p className='damage'>- {challDamage}</p>
                         }
                          {((winner == 'challenger')) && 
-                        <p className='winner'>Winner!</p>
+                        <p className='winner'>Victory!</p>
                         }
                      {((winner == 'champion')) && 
                         <p className='damage_lose'>Defeated</p>
@@ -142,12 +161,12 @@ export default function Battle() {
                 </div>
             <div className="col-6">
             <div className="card mt-5">
-                    <img className="overlayImg" src={champ.link}></img>
+                    <img className="overlayImg" alt="champion" src={champ.link}></img>
                     {((winner!= 'challenger' && winner!= 'champion')&&(champDamage!=40)) && 
                         <p className='damage'>- {champDamage}</p>
                         }
                     {((winner == 'champion')) && 
-                        <p className='winner'>Winner!</p>
+                        <p className='winner'>Victory!</p>
                         }
                      {((winner == 'challenger')) && 
                         <p className='damage_lose'>Defeated</p>
@@ -170,6 +189,21 @@ export default function Battle() {
         <button type="submit" className="btn btn-danger mb-3 battleButton">Fight</button>
         }   
         </form>
+
+        <div className="row">
+            <div className="col-12">
+            
+                 {(story) ?
+                    <p className='story'>{story.story}</p>
+                    :(winner)?
+                    <p className='story2'>Chat GPT story being composed ✍</p>
+                    :<></>
+                   
+            
+                }
+   
+        </div>
+        </div>
     </div>
   )
 }

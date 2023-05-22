@@ -90,7 +90,9 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                 <h5>Creature Type</h5>
                 <select className="form-select" name = "creature">
                     <option value="Aardvark">Aardvark</option>
+                    <option value="Beaver">Beaver</option>
                     <option value="Cat">Cat</option>
+                    <option value="Cucumber">Cucumber</option>
                     <option value="Dinosaur">Dinosaur</option>
                     <option value="Dog">Dog</option>
                     <option value="Dragon">Dragon</option>
@@ -141,20 +143,25 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
              <h5>Art Style</h5>
                 <select className="form-select" name = "art">
                     <option value="1940s style Comic Book">1940s style Comic Book</option>
-                    <option value="1980s style Cartoon">1990s style Cartoon</option>
+                    <option value="1990s style Cartoon">1990s style Cartoon</option>
+                    <option value="Art Nouveau">Art Nouveau</option>
                     <option value="Anime Portrait">Anime Portrait</option>
                     <option value="Cave painting">Cave painting</option>
                     <option value="Children's drawing">Children's drawing</option>
                     <option value="Cyberpunk">Cypberpunk</option>
                     <option value="Diagrammatic Drawing">Diagrammatic Drawing</option>
                     <option value="Graffiti">Graffiti</option>
+                    <option value="Impressionist Painting">Impressionist Painting</option>
+                    <option value="Normal Rockwell">Norman Rockwell</option>
                     <option value="On a Wanted Poster">On a Wanted Poster</option>
                     <option value="Oil Painting">Oil Painting</option>
                     <option value="Picasso">Picasso</option>
                     <option value="Pixel Art">Pixel Art</option>
                     <option value="Pastel Drawing">Pastel Drawing</option>
                     <option value="Photograph">Photograph</option>
+                    <option value="Photorealism">Photorealism</option>
                     <option value="Renaissance Painting">Renaissance Painting</option>
+                    <option value="Surrealism">Surrealism</option> 
                     <option value="Ukiyo-e art">Ukiyo-e art</option>
                     <option value="Van Gogh">Van Gogh</option>
                     <option value="Watercolour">Watercolour</option>

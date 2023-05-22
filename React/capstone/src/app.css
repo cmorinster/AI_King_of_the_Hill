@@ -1,5 +1,5 @@
 body {
-    background: rgb(84, 166, 201);
+    background: rgb(116, 130, 136);
 
 }
 
@@ -102,19 +102,34 @@ h1{
 .winner{
     z-index: 1;
     position: absolute;
-    top: 10%;
+    top: 25%;
     left: 5%;
-    font-size: 120px;
-    color:rgb(70, 236, 73);
-    font-family:'Andale Mono Regular'
+    font-size: 110px;
+    color:rgb(181, 252, 3);
+    font-family:'The Black Knight'
 }
 
 .damage_lose{
     z-index: 1;
     position: absolute;
-    top: 10%;
+    top: 25%;
     left: 3%;
     font-size: 130px;
     color: red;
     font-family: 'Bloody Scary'
+}
+
+.story2{
+    font-size: 60px;
+    font-family:'The Black Knight';
+    color: rgb(249, 251, 228);
+    margin-left: auto;
+
+}
+
+.story{
+    background-color: antiquewhite;
+    color:black;
+    font-family:'Papyrus';
+    padding: 1%;
 }

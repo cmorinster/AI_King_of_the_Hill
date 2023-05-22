@@ -142,6 +142,30 @@ def create_character():
    
 
 
+
+
+
+@api.route('/battle/<int:winner_id>/<int:loser_id>')
+def get_battle_story(winner_id, loser_id):
+    winner = Characters.query.get_or_404(winner_id)
+    loser = Characters.query.get_or_404(loser_id)
+    win_desc_index = winner.description.index("in the style of")
+    win_desc = winner.description[:win_desc_index-1]
+    lose_desc_index = loser.description.index("in the style of")
+    lose_desc = loser.description[:lose_desc_index-1]
+
+    response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=f"Can you please write a fictional story in a fantasy world of how {winner.name}, a {win_desc}, defeated {loser.name}, a {lose_desc}, in battle, using approximately 150 words or less?",
+    temperature=0.7,
+    max_tokens=264,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0
+    )
+
+    return jsonify({'story': response['choices'][0]['text']})
+
 # Get all characters
 @api.route('/characters1')
 def get_characters():
