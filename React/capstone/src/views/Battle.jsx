@@ -30,6 +30,19 @@ export default function Battle() {
                 setchamp(data);
             })
     }, [characterCurrent])
+
+    useEffect(() =>{
+        fetch(`http://127.0.0.1:5000/api/battle/${champ.id}/${challenger.id}`) 
+            .then(res => res.json())
+            .then(data => {
+            setstory(data);
+            })
+
+    }, [champ])
+
+
+
+
     
     const delay = ms => new Promise(res => setTimeout(res, ms));
     async function handleSubmit(e){ 
@@ -45,8 +58,8 @@ export default function Battle() {
             await delay(1000);
             let challengerRoll = getRandomInt(1, challengerTotal/2);
             let champRoll = getRandomInt(1, champTotal/2);
-            setchallDamage(challengerRoll);
-            setchampDamage(champRoll);
+            setchallDamage(champRoll);
+            setchampDamage(challengerRoll);
             champHP -= challengerRoll;
             challengerHP -= champRoll;
             setchallHealth(challengerHP);
@@ -87,12 +100,8 @@ export default function Battle() {
                 headers: myHeaders,
                 body: formData
             })
-            fetch(`http://127.0.0.1:5000/api/battle/${champ.id}/${challenger.id}`) 
-            .then(res => res.json())
-            .then(data => {
-            setstory(data);
-            })
-            .then (function(){return(setstoryChecker(false))});
+            
+           
 
         } else {
             let formData = JSON.stringify({
@@ -115,14 +124,6 @@ export default function Battle() {
                 headers: myHeaders,
                 body: formData2
             })
-
-            fetch(`http://127.0.0.1:5000/api/battle/${challenger.id}/${champ.id}`) 
-               .then(res => res.json())
-               .then(data => {
-                setstory(data);
-                
-            })
-               .then (function(){return(setstoryChecker(false))});
             
 
         }
@@ -193,12 +194,11 @@ export default function Battle() {
         <div className="row">
             <div className="col-12">
             
-                 {(story) ?
-                    <p className='story'>{story.story}</p>
-                    :(winner)?
-                    <p className='story2'>Chat GPT story being composed ✍</p>
-                    :<></>
-                   
+                 {((story)&&(winner)&&(winner=='champion')) ?
+                    <p className='story'>{story.story}</p>:
+                    ((winner)&&(story))?
+                    <p className='story'>{story.story2}</p>:
+                    <></>
             
                 }
    

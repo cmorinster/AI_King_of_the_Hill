@@ -145,18 +145,18 @@ def create_character():
 
 
 
-@api.route('/battle/<int:winner_id>/<int:loser_id>')
-def get_battle_story(winner_id, loser_id):
-    winner = Characters.query.get_or_404(winner_id)
-    loser = Characters.query.get_or_404(loser_id)
-    win_desc_index = winner.description.index("in the style of")
-    win_desc = winner.description[:win_desc_index-1]
-    lose_desc_index = loser.description.index("in the style of")
-    lose_desc = loser.description[:lose_desc_index-1]
+@api.route('/battle/<int:champ_id>/<int:chall_id>')
+def get_battle_story(champ_id, chall_id):
+    champ = Characters.query.get_or_404(champ_id)
+    chall = Characters.query.get_or_404(chall_id)
+    champ_desc_index = champ.description.index("in the style of")
+    champ_desc = champ.description[:champ_desc_index-1]
+    chall_desc_index = chall.description.index("in the style of")
+    chall_desc = chall.description[:chall_desc_index-1]
 
     response = openai.Completion.create(
     model="text-davinci-003",
-    prompt=f"Can you please write a fictional story in a fantasy world of how {winner.name}, a {win_desc}, defeated {loser.name}, a {lose_desc}, in battle, using approximately 150 words or less?",
+    prompt=f"Can you please write a fictional story in a fantasy world of how {champ.name}, a {champ_desc}, defeated {chall.name}, a {chall_desc}, in battle, using approximately 150 words or less?",
     temperature=0.7,
     max_tokens=264,
     top_p=1,
@@ -164,7 +164,22 @@ def get_battle_story(winner_id, loser_id):
     presence_penalty=0
     )
 
-    return jsonify({'story': response['choices'][0]['text']})
+    storydict = {'story': response['choices'][0]['text']}
+
+
+    response2 = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=f"Can you please write a fictional story in a fantasy world of how {chall.name}, a {chall_desc}, defeated {champ.name}, a {champ_desc}, in battle, using approximately 150 words or less?",
+    temperature=0.7,
+    max_tokens=264,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0
+    )
+
+    storydict.update({'story2': response2['choices'][0]['text']})
+
+    return jsonify(storydict)
 
 # Get all characters
 @api.route('/characters1')
