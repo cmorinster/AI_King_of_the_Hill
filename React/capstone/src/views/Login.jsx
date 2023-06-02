@@ -47,12 +47,12 @@ export default function Login({ flashMessage, logUserIn }) {
 
     return (
         <>
-            <h2 className="text-center">Log In Here!</h2>
+            <h2 className="text-center TitleTop">Log In Here!</h2>
             <form action="" onSubmit={handleLogin}>
                 <div className="form-group">
-                    <input type="text" name="username" className="form-control my-3" placeholder='Enter Username' />
-                    <input type="password" name="password" className="form-control my-3" placeholder='Enter Password' />
-                    <input type="submit" value="Log In" className='btn btn-success w-100' />
+                    <input type="text" name="username" className="form-control my-3 InputText" placeholder='Enter Username' />
+                    <input type="password" name="password" className="form-control my-3 InputText" placeholder='Enter Password' />
+                    <input type="submit" value="Log In" className='btn btn-success w-100 ButtonApp' />
                 </div>
             </form>
         </>

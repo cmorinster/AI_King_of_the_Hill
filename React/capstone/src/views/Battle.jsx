@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react'
+import useSWR from 'swr'
 
 export default function Battle() {
     const [challenger, setChallenger] = useState({});
     const [champ, setchamp] = useState({});
+    const [story, setstory] = useState({}); 
     const [champDamage, setchampDamage] = useState(40);
-    const [story, setstory] = useState(null);
     const [challDamage, setchallDamage] = useState(40);
     const [champHealth, setchampHealth] = useState(30);
     const [challHealth, setchallHealth] = useState(30);
     const [buttonChecker, setbuttonChecker] = useState(true);
-    const [storyChecker, setstoryChecker] = useState(true);
     const [winner, setWinner] = useState(null);
     let characterCurrent = localStorage.getItem('charId');
     useEffect(() => {
@@ -19,10 +19,6 @@ export default function Battle() {
                 console.log(data);
                 setChallenger(data);
             })
-    }, [characterCurrent])
-    
-    
-    useEffect(() => {
         fetch(`http://127.0.0.1:5000/api/champ`)
             .then(res => res.json())
             .then(data => {
@@ -30,18 +26,30 @@ export default function Battle() {
                 setchamp(data);
             })
     }, [characterCurrent])
+    
 
-    useEffect(() =>{
-        fetch(`http://127.0.0.1:5000/api/battle/${champ.id}/${challenger.id}`) 
+    useEffect(()=>{
+        fetch(`http://127.0.0.1:5000/api/battle/${champ.id}/${challenger.id}`)
             .then(res => res.json())
             .then(data => {
-            setstory(data);
+                setstory(data);
             })
 
     }, [champ])
 
+    
+        // const { data:story, error, isLoading, isValidating } = useSWR('/api/user',  () => fetch(`http://127.0.0.1:5000/api/battle/${champ.id}/${challenger.id}`) 
+        // .then(res => res.json()))
+
+       
+
+    // useEffect(() =>{
+        
+
+    // }, [champ])
 
 
+   
 
     
     const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -129,7 +137,9 @@ export default function Battle() {
         }
        
     }
-
+    const hasWinner = Boolean(story && winner);
+    const winnerIsChamp = winner === "champion";
+    const winnerStory = hasWinner? (winnerIsChamp ? story.story : story.story2):null;
   return (
     <div>
         <form action="" onSubmit={handleSubmit}>
@@ -193,14 +203,10 @@ export default function Battle() {
 
         <div className="row">
             <div className="col-12">
+
+                 {(winnerStory) ? <p className="story">{winnerStory}</p> : null}
             
-                 {((story)&&(winner)&&(winner=='champion')) ?
-                    <p className='story'>{story.story}</p>:
-                    ((winner)&&(story))?
-                    <p className='story'>{story.story2}</p>:
-                    <></>
-            
-                }
+                
    
         </div>
         </div>

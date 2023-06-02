@@ -44,14 +44,14 @@ export default function Register({ flashMessage }) {
 
     return (
         <>
-            <h2 className="text-center">Sign Up To Start Creating Characters!</h2>
+            <h2 className="text-center TitleTop">Sign Up To Start Creating Characters!</h2>
             <form action="" onSubmit={handleRegister}>
                 <div className="form-group">
-                    <input type="text" name="email" className="form-control my-3" placeholder='Enter Email' />
-                    <input type="text" name="username" className="form-control my-3" placeholder='Enter Username' />
-                    <input type="password" name="password" className="form-control my-3" placeholder='Enter Password' />
-                    <input type="password" name="confirmPass" className="form-control my-3" placeholder='Confirm Password' />
-                    <input type="submit" value="Sign Up" className='btn btn-success w-100' />
+                    <input type="text" name="email" className="form-control my-3 InputText" placeholder='Enter Email' />
+                    <input type="text" name="username" className="form-control my-3 InputText" placeholder='Enter Username' />
+                    <input type="password" name="password" className="form-control my-3 InputText" placeholder='Enter Password' />
+                    <input type="password" name="confirmPass" className="form-control my-3 InputText" placeholder='Confirm Password' />
+                    <input type="submit" value="Sign Up" className='btn btn-success w-100 ButtonApp' />
                 </div>
             </form>
         </>

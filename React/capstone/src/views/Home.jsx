@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
+import PuffLoader from "react-spinners/PuffLoader";
 
 export default function Home() {
     const [champion, setChampion] = useState({});
-
+    const [loader, setLoader] = useState(false);
+   
     useEffect(() => {
+      setLoader(true);
       fetch(`http://127.0.0.1:5000/api/champ`)
           .then(res => res.json())
           .then(data => {
               console.log(data);
               setChampion(data);
+              setLoader(false)
           })
   }, [])
     
@@ -29,9 +33,25 @@ export default function Home() {
 
 
   return (
-    <div>
+    
+      <div>
+        
       <h1>Welcome to the AI Art King of the Hill</h1>
-      
+      {loader?
+        <>
+        <h2 className='LoadingText'>Current Champ is Being Summoned!</h2>
+        
+        <PuffLoader
+        className='loader'
+        color={"#ffffff"}
+        loading={loader}
+        size={150}
+        aria-label="Puff Loader"
+        data-testid="loader"
+      />
+        </>
+
+      :
         <div className="card homeCard">
           <img src={champion.link} className="homeImg"></img>
                 <div className="card-body">  
@@ -47,9 +67,13 @@ export default function Home() {
                 <Link className='btn btn-primary right homeButton' to={`/login`}>Login</Link>
                 </div>
                 </div>
-        </div>
+          </div>
+
+          }
 
 
     </div>
+
+    
   )
 }

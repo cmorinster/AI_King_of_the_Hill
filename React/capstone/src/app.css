@@ -9,24 +9,24 @@ h2{
 }
 
 h4{ 
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Papyrus';
     color: rgb(249, 251, 228);
     text-align: center;
 }
 
 h3{
     color:crimson;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Papyrus';
 }
 
 h2{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Papyrus';
     margin-top: 10px;
 }
 
 h5 {
     margin-top: 10px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Papyrus';
 }
 
 .battleButton {
@@ -48,9 +48,10 @@ h5 {
     width: 80%;
     margin-left: 10%;
     margin-bottom: 5%;
+    font-family:'Papyrus';
 }
 h1{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Papyrus';
     text-align: center;
     margin-top: 2%;
     font-size: 50px;
@@ -132,4 +133,54 @@ h1{
     color:black;
     font-family:'Papyrus';
     padding: 1%;
+}
+
+.loader{
+
+
+
+    margin: auto;
+    position: relative;
+    margin-top: 20%;
+}
+
+.LoadingText{
+    text-align: center;
+    font-family:'Papyrus';
+
+
+}
+
+.ButtonApp{
+    font-family:'Papyrus';
+    font-size: 20px;
+}
+
+.MenuText{
+    font-family:'Papyrus';
+    font-size: 25px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: rgb(249, 251, 228);
+
+}
+
+.InputText{
+    font-family:'Papyrus';
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+
+
+.MarginTopRow{
+    margin-top: 5%;
+}
+
+.TitleTop{
+    margin-top: 2%;
+}
+.MarginForm{
+    margin-top: 5%;
+    position: relative;
 }

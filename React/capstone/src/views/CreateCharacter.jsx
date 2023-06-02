@@ -83,12 +83,14 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
         <>
         <div className="row">
             <form action="" onSubmit={handleSubmit}>
-            <div className="form-group">
-            <h2>Name</h2>
-            <input type="text" name="name" className="form-control my-3" placeholder="Enter Character's Name" />
+            <div className="form-group MarginForm">
+            
             <div className="col-5">
-                <h5>Creature Type</h5>
-                <select className="form-select" name = "creature">
+                <h5 className='MenuText'>Name</h5>
+                <input type="text" name="name" className="form-control InputText" placeholder="Enter Character's Name" />
+                <h5 className='MenuText'>Creature Type</h5>
+                {/* <input className="form-control InputText" name="creature" /> */}
+                <select className="form-select InputText" name = "creature">
                     <option value="Aardvark">Aardvark</option>
                     <option value="Beaver">Beaver</option>
                     <option value="Cat">Cat</option>
@@ -96,6 +98,7 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                     <option value="Dinosaur">Dinosaur</option>
                     <option value="Dog">Dog</option>
                     <option value="Dragon">Dragon</option>
+                    <option value="Duck">Duck</option>
                     <option value="Elephant">Elephant</option>
                     <option value="Goat">Goat</option>
                     <option value="Gorilla">Gorilla</option>
@@ -118,12 +121,14 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                 </select>
             </div>
             <div className="col-5">
-                <h5>Action</h5>
-                <select className="form-select" name = "action">
+                <h5 className='MenuText'>Action</h5>
+                {/* <input className="form-control InputText" name="action" /> */}
+                <select className="form-select InputText" name = "action">
                     <option value="Breathing Fire">Breathing Fire</option>
                     <option value="Carrying groceries">Carrying Groceries</option>
                     <option value="Catching Fireflys With a Net">Catching Fireflys With a Net</option>
                     <option value="Directing Traffic">Directing Traffic</option>
+                    <option value="Grappling its Twin">Grappling its Twin</option>
                     <option value="Holding an Axe">Holding an Axe</option>
                     <option value="Holding Watermelons">Holding Watermelons</option>
                     <option value="In a Hot Air Balloon">In a Hot Air Balloon</option>
@@ -140,8 +145,8 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                 </select>
             </div>
             <div className="col-5">
-             <h5>Art Style</h5>
-                <select className="form-select" name = "art">
+             <h5 className='MenuText'>Art Style</h5>
+                <select className="form-select InputText" name = "art">
                     <option value="1940s style Comic Book">1940s style Comic Book</option>
                     <option value="1990s style Cartoon">1990s style Cartoon</option>
                     <option value="Art Nouveau">Art Nouveau</option>
@@ -165,12 +170,13 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                     <option value="Ukiyo-e art">Ukiyo-e art</option>
                     <option value="Van Gogh">Van Gogh</option>
                     <option value="Watercolour">Watercolour</option>
+                    <option value="Yoshitaka Amano">Yoshitaka Amano</option>
 
                 </select>
                 
             </div>
             <div className="col-auto mt-3">
-                <button type="submit" className="btn btn-success mb-3">Generate</button>
+                <button type="submit" className="btn btn-success mb-3 ButtonApp">Generate</button>
             </div>
             </div>
             </form>
