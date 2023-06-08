@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import PuffLoader from "react-spinners/PuffLoader";
+import imageToAdd from "../Images/Crown.png"
 
 export default function Home() {
     const [champion, setChampion] = useState({});
@@ -36,7 +37,7 @@ export default function Home() {
     
       <div>
         
-      <h1>Welcome to the AI Art King of the Hill</h1>
+      <h1>AI Art King of the Hill</h1>
       {loader?
         <>
         <h2 className='LoadingText'>Current Champ is Being Summoned!</h2>
@@ -52,27 +53,32 @@ export default function Home() {
         </>
 
       :
-        <div className="card homeCard">
-          <img src={champion.link} className="homeImg"></img>
-                <div className="card-body">  
-                  <h3>Current Champion:</h3>
-                  <h3 className="card-title">{champion.name}</h3>  
-                </div>
-                  <h2 className="card-title beatThem">{champion.name} says you smell bad! Think You Can Beat Them?</h2>  
-                <div className="row">
-                <div className="col">
-                <Link className='btn btn-primary left homeButton' to={`/register`}>Register</Link>
-                </div>
-                <div className="col">
-                <Link className='btn btn-primary right homeButton' to={`/login`}>Login</Link>
-                </div>
-                </div>
+      <>
+      
+        <div className='row'>
+        
+          <div className='frame'>
+          
+              <img src={champion.link} className="homeImg"></img>
           </div>
-
+          <div className='HomeButtons'>
+            <Link className='btn btn-primary left homeButton' to={`/register`}>Register</Link>
+            <Link className='btn btn-primary right homeButton' to={`/login`}>Login</Link>
+          </div>
+        </div>
+     
+     
+        <div className='row'>
+            <div className="homeCard">
+                    <h3 className="card-title">Champ: {champion.name} the {champion.description}</h3>  
+            </div>
+        </div>
+          </>
           }
 
 
     </div>
+    
 
     
   )

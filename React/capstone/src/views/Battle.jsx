@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import useSWR from 'swr'
+import { useRef } from 'react';
+import PuffLoader from "react-spinners/PuffLoader";
 
 export default function Battle() {
     const [challenger, setChallenger] = useState({});
-    const [champ, setchamp] = useState({});
+    const [champ, setChamp] = useState({});
     const [story, setstory] = useState({}); 
+    const [loader, setLoader] = useState(false);
     const [champDamage, setchampDamage] = useState(40);
     const [challDamage, setchallDamage] = useState(40);
     const [champHealth, setchampHealth] = useState(30);
@@ -13,18 +16,26 @@ export default function Battle() {
     const [winner, setWinner] = useState(null);
     let characterCurrent = localStorage.getItem('charId');
     useEffect(() => {
+        setLoader(true);
+        fetch(`http://127.0.0.1:5000/api/champ`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setChamp(data);
+            setLoader(false);
+            
+        }) 
+
+
         fetch(`http://127.0.0.1:5000/api/characters/${characterCurrent}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setChallenger(data);
+                
+
             })
-        fetch(`http://127.0.0.1:5000/api/champ`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setchamp(data);
-            })
+        
     }, [characterCurrent])
     
 
@@ -141,7 +152,26 @@ export default function Battle() {
     const winnerIsChamp = winner === "champion";
     const winnerStory = hasWinner? (winnerIsChamp ? story.story : story.story2):null;
   return (
-    <div>
+
+    
+
+    <>
+        {loader?
+        <>
+        <h2 className='LoadingText BattleLoading'>Arena is being setup!</h2>
+        
+        <PuffLoader
+        className='loader'
+        color={"#ffffff"}
+        loading={loader}
+        size={150}
+        aria-label="Puff Loader"
+        data-testid="loader"
+      />
+        </>
+
+      :
+      <div>
         <form action="" onSubmit={handleSubmit}>
         <div className="row">
             <div className="col-6">
@@ -210,6 +240,9 @@ export default function Battle() {
    
         </div>
         </div>
+
     </div>
+}
+</>
   )
 }
