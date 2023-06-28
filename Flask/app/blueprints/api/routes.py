@@ -9,6 +9,7 @@ from app.blueprints.api import api
 from app.blueprints.api.models import Characters, User
 from app.blueprints.api.http_auth import basic_auth, token_auth
 from sqlalchemy import select
+from sqlalchemy import desc
 openai.organization = "org-mrhmm4bXaDJPBe0S5mpDJDAm"
 openai.api_key = os.getenv("OPENAI_API_KEY")
 openai.Model.list()
@@ -192,7 +193,27 @@ def get_characters():
 @api.route('/characters/<int:character_id>')
 def get_character(character_id):
     character = Characters.query.get_or_404(character_id)
-    return jsonify(character.to_dict())
+    linkstat = requests.get(character.link).status_code
+    print(linkstat)
+    if linkstat > 209:
+        response1 = openai.Image.create(
+        prompt= character.description,
+        n=1,
+        size="1024x1024"
+        )
+        champ_char = (character.to_dict())
+        print(champ_char)
+        print("hellO")
+        print(type(champ_char))
+        champ_char['link'] = response1['data'][0]['url']
+        print('here')
+        character1 = Characters.query.get_or_404(character.id)
+        character1.update(champ_char)
+        return jsonify(character.to_dict())
+    else:
+        print("hi")
+        return jsonify(character.to_dict())
+    
 
 
 # Update a single character with id
@@ -203,12 +224,28 @@ def update_character(character_id):
     character.update(data)
     return jsonify(character.to_dict())
 
+
+
+@api.route('/hof')
+def get_hof():
+    results = db.session.execute(db.select(Characters).order_by(Characters.wins.desc()).limit(10))
+    counter = 1
+    char_dict = {}
+    for chars in results:
+        for thing in chars:
+            char_dict.update({counter:thing.to_dict()})
+            counter += 1 
+    return jsonify(char_dict)
+
+
+
 # Get champion
 @api.route('/champ')
 def get_champ():
     results = db.session.execute(db.select(Characters).where(Characters.champion == True)).scalars().all()
     for chars in results:
             if chars.champion == True:
+                print (type(chars))
                 champ = chars
                 break
     linkstat = requests.get(champ.link).status_code

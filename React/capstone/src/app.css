@@ -45,19 +45,21 @@ h5 {
 }
 
 .homeButton{
+    padding: 5%;
+    font-size: 20px;
     width: 80%;
     margin-left: 10%;
-    margin-bottom: 5%;
-    border-color: #ecf78c;
-    color: #ecf78c;
+    margin-bottom: 20%;
+    border-color: rgb(249, 251, 228);
+    color: black;
     background-color: #67b9b8;
     display:block;
     font-family:'Warrior of World';
 }
 .homeButton:hover{
-    border-color: #ecf78c;
-    color:  #67b9b8;
-    background-color:#ecf78c;
+    border-color: rgb(249, 251, 228);
+    color:  black;
+    background-color:rgb(249, 251, 228);
 
 }
 h1{
@@ -82,7 +84,8 @@ h1{
     height: 50%;
     width: 50%;
     margin: auto;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
+
   
 }
 
@@ -90,7 +93,7 @@ h1{
     height: 100%;
     width: 100%; 
     position: relative;
-    border-color:#ecf78c #67b9b8;
+    border-color:rgb(249, 251, 228) #67b9b8;
     border-image:none;
     border-radius: 0 0 0 0;
     -moz-border-radius:0 0 0 0;
@@ -110,8 +113,11 @@ h1{
 .HomeButtons{
     height: 40%;
     width: 40%;
+    margin-top: 6.3333%;
     
 }
+
+
 
 @media only screen and (max-width: 992px) {
 
@@ -128,14 +134,13 @@ h1{
     width: 70%;
     display: block;
     margin: auto;
-    border-color:#ecf78c #67b9b8;
+    border-color:rgb(249, 251, 228) #67b9b8;
     border-image:none;
     border-radius: 0 0 0 0;
     -moz-border-radius:0 0 0 0;
     -webkit-border-radius:0 0 0 0;
     border-style:solid;
     border-width:2vh;
-    
 }
 
 .crown{
@@ -150,24 +155,118 @@ h1{
     height: 100%;
     margin:auto;
     position: relative;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .homeButton{
-    display: inline;
+   display: inline-block;
+   width: 20%;
+   margin: 6.33333%;
+   font-size: 100%;
+   padding: 3%;
 
 }
 
 .homeCard{
     display: none;
-}
 
 }
 
+}
+/* end of small screen */
     
+.homeCard{
+    position: relative;
+    width: 40%;
+    height: 85%;
+    left: 10%;
+    text-align: center;
+    border-radius: 15%;
+    background-color: rgb(249, 251, 228);
+    padding-top: 1%;
+}
+
+.frameHof{
+    padding-top: 5%;
+}
+
+.hofImg{ 
+    height: 100%;
+    width: 100%; 
+    position: relative;
+    border-color:rgb(249, 251, 228) #67b9b8;
+    border-image:none;
+    border-radius: 0 0 0 0;
+    -moz-border-radius:0 0 0 0;
+    -webkit-border-radius:0 0 0 0;
+    border-style:solid;
+    border-width: 2vw;
+    
+    
+}
 
 
-    
+
+.hofList{
+   display: inline-block;
+   height: 40%;
+   width: 40%;
+   table-layout: fixed;
+   padding-top: 5%;
+ 
+
+}
+.hofList>tr>td{
+    padding: 4.5% 15px;
+    width: 50%;
+    text-align: center;
+    font-family:'Papyrus';
+
+}
+.hofList>tr>th{
+    padding: 3px 2px;
+    width: 50%;
+    text-align: center;
+    font-family:'Warrior of World';
+}
+.hofList>tr>td:first-child{
+    background-color:  #67b9b8;
+}
+.hofList>tr>td:first-child:hover{
+    background-color:   rgb(249, 251, 228);
+    border-color: black;
+    border-radius: 0 0 0 0;
+    border-style:solid;
+    border-width: 1px;
+}
+
+.hofList>tr>td:nth-child(2){
+    background-color: rgb(249, 251, 228);
+}
+
+.hofList>tr>th:first-child{
+    background-color: rgb(249, 251, 228);
+}
+
+.hofList>tr>th:nth-child(2){
+    background-color:  #67b9b8;
+}
+
+
+.hofListNames{
+   height: 40%;
+   width:50%;
+   display: inline-block;
+}
+
+.hofListWins{
+   height: 40%;
+   width: 50%;
+   left: 70%;
+   display: inline-block;
+   position: relative;
+}
+
 .top_paragraph{
     text-align: center;
     font-size: 20px;
@@ -224,16 +323,14 @@ h1{
 }
 
 .story{
-    background-color: antiquewhite;
+    background-color: rgb(249, 251, 228);
     color:black;
-    font-family:'Warrior of World';
+    font-family:'roboto';
     padding: 1%;
+    font-size: large;
 }
 
 .loader{
-
-
-
     margin: auto;
     position: relative;
     margin-top: 20%;
@@ -242,8 +339,6 @@ h1{
 .LoadingText{
     text-align: center;
     font-family:'Warrior of World';
-
-
 }
 
 .ButtonApp{

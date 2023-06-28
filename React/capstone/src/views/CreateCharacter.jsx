@@ -89,8 +89,8 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                 <h5 className='MenuText'>Name</h5>
                 <input type="text" name="name" className="form-control InputText" placeholder="Enter Character's Name" />
                 <h5 className='MenuText'>Creature Type</h5>
-                {/* <input className="form-control InputText" name="creature" /> */}
-                <select className="form-select InputText" name = "creature">
+                <input className="form-control InputText" name="creature" />
+                {/* <select className="form-select InputText" name = "creature">
                     <option value="Aardvark">Aardvark</option>
                     <option value="Beaver">Beaver</option>
                     <option value="Cat">Cat</option>
@@ -118,12 +118,12 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                     <option value="Yak">Yak</option>
                     <option value="Zombie">Zombie</option>
 
-                </select>
+                </select> */}
             </div>
             <div className="col-5">
                 <h5 className='MenuText'>Action</h5>
-                {/* <input className="form-control InputText" name="action" /> */}
-                <select className="form-select InputText" name = "action">
+                <input className="form-control InputText" name="action" />
+                {/* <select className="form-select InputText" name = "action">
                     <option value="Breathing Fire">Breathing Fire</option>
                     <option value="Carrying groceries">Carrying Groceries</option>
                     <option value="Catching Fireflys With a Net">Catching Fireflys With a Net</option>
@@ -133,16 +133,18 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
                     <option value="Holding Watermelons">Holding Watermelons</option>
                     <option value="In a Hot Air Balloon">In a Hot Air Balloon</option>
                     <option value="In a trenchcoat">In a Trenchcoat</option>
-                    <option value="Juggling Chainsaws">Juggling Chainsaws</option>
+                    <option value="Juggling Apples">Juggling Apples</option>
                     <option value="Lifting Weights">Lifting Weights</option>
+                    <option value="On the set of 8 Mile">On the set of 8 Mile</option>
                     <option value="Pushing a Wheelbarrow">Pushing a Wheelbarrow</option>
                     <option value="Riding a Horse">Riding a Horse</option>
                     <option value="Skateboarding">Skateboarding</option>
-                    <option value="With Horns">With Horns</option>
-                    <option value="With a Jetpack">With a Jetpack</option>
                     <option value="Wearing Armor">Wearing Armor</option>
                     <option value="Wearing Suspenders">Wearing Suspenders</option>
-                </select>
+                    <option value="Wielding a Broad Sword">Wielding a Broad Sword</option>
+                    <option value="With Horns">With Horns</option>
+                    <option value="With a Jetpack">With a Jetpack</option>
+                </select> */}
             </div>
             <div className="col-5">
              <h5 className='MenuText'>Art Style</h5>

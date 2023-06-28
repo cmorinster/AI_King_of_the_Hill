@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import PuffLoader from "react-spinners/PuffLoader";
-import imageToAdd from "../Images/Crown.png"
 
 export default function Home() {
     const [champion, setChampion] = useState({});
     const [loader, setLoader] = useState(false);
+    const [captionEdit, setCaptionEdit] = useState(null);
    
     useEffect(() => {
       setLoader(true);
@@ -14,7 +14,8 @@ export default function Home() {
           .then(data => {
               console.log(data);
               setChampion(data);
-              setLoader(false)
+              setLoader(false);
+
           })
   }, [])
     
@@ -30,8 +31,15 @@ export default function Home() {
   //     headers: myHeaders,
   //     body: formData
   // })
+  useEffect(()=>{
+  
+  if (champion){
+    const caption = champion.name + " the " + champion.description;
+    const captionLoc = caption.indexOf("in the style");
+    setCaptionEdit(caption.substring(0, captionLoc));
 
-
+  }
+}, [champion]);
 
   return (
     
@@ -64,13 +72,20 @@ export default function Home() {
           <div className='HomeButtons'>
             <Link className='btn btn-primary left homeButton' to={`/register`}>Register</Link>
             <Link className='btn btn-primary right homeButton' to={`/login`}>Login</Link>
+            <Link className='btn btn-primary right homeButton' to={`/hof`}>Hall of Fame</Link>
           </div>
         </div>
      
-     
+
         <div className='row'>
             <div className="homeCard">
-                    <h3 className="card-title">Champ: {champion.name} the {champion.description}</h3>  
+                
+                    {/* <img src={imageToAdd}></img> */}
+                    <h3>Champion</h3>
+                    {captionEdit&&
+                    
+                    <h3 className="card-title">{captionEdit}</h3>  
+                    }
             </div>
         </div>
           </>

@@ -83,7 +83,7 @@ class Characters(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return f"<Character {self.id}|{self.title}>"
+        return f"<Character {self.id}|{self.name}>"
 
     def to_dict(self):
         return {
@@ -105,7 +105,14 @@ class Characters(db.Model):
             'creator': User.query.get(self.user_id).to_dict()
         }
     
-        
+    def to_dict_wins(self):   
+        return{
+            'id': self.id,
+            'name': self.name,
+            'wins': self.wins,
+            'creator': User.query.get(self.user_id).to_dict()
+        }
+
         
 
     def update(self, data):

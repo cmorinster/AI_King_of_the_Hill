@@ -20,7 +20,7 @@ export default function Navbar({ loggedIn, logUserOut }) {
                             </>
                         ) : (
                             <>
-                            <Link className="nav-link" to="/register">Sign Up</Link>
+                            <Link className="nav-link" to="/register">Register</Link>
                             <Link className="nav-link" to="/login">Log In</Link>
                             </>
                         )}

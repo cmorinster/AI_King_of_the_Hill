@@ -12,6 +12,7 @@ import Register from './views/Register';
 import Battle from './views/Battle';
 //import MyCharacters from './views/MyCharacters';
 import "./app.css";
+import HallOfFame from './views/HallOfFame';
 
 function App() {
     const now = new Date();
@@ -44,6 +45,7 @@ function App() {
                     <Route path='/login' element={<Login flashMessage={flashMessage} logUserIn={setLoggedIn} />} />
                     <Route path='/create' element={<CreateCharacter flashMessage={flashMessage} loggedIn={loggedIn} />} />
                     <Route path='/battle' element={<Battle/>} />
+                    <Route path='/hof' element={<HallOfFame/>} />
                     {/* <Route path='/characters' element={<MyCharacters flashMessage={flashMessage} loggedIn={loggedIn} />} />
                     <Route path='/characters/:characterId/edit' element={<EditCharacter flashMessage={flashMessage} loggedIn={loggedIn} />} />
                     <Route path='/characters/:characterId/delete' element={<DeleteCharacter flashMessage={flashMessage} loggedIn={loggedIn} />} /> 
