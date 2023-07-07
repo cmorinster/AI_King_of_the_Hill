@@ -234,9 +234,14 @@ export default function Battle() {
         <div className="row">
             <div className="col-12">
 
-                 {(winnerStory) ? <p className="story">{winnerStory}</p> : null}
+                 {(winnerStory) ? 
+                <>
+                 <h1>The tale of how {champ.name} was victorious</h1>
+                 <p className="story">{winnerStory}</p> </>: null
+                 
+                 }
             
-                
+                 
    
         </div>
         </div>
