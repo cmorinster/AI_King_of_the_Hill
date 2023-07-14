@@ -28,7 +28,7 @@ export default function CreateCharacter({ loggedIn, flashMessage }) {
 
         let requestBody = JSON.stringify({ name, description, link, strength, agility, intellegence, speed, endurance, camoflague, health})
         console.log(requestBody)
-        fetch('http://127.0.0.1:5000/api/characters', {
+        fetch('http://3.23.92.242/api/characters', {
             method: 'POST',
             headers: myHeaders,
             body: requestBody

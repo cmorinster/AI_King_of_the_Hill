@@ -17,7 +17,7 @@ export default function Battle() {
     let characterCurrent = localStorage.getItem('charId');
     useEffect(() => {
         setLoader(true);
-        fetch(`http://127.0.0.1:5000/api/champ`)
+        fetch(`http://3.23.92.242/api/champ`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -27,7 +27,7 @@ export default function Battle() {
         }) 
 
 
-        fetch(`http://127.0.0.1:5000/api/characters/${characterCurrent}`)
+        fetch(`http://3.23.92.242/api/characters/${characterCurrent}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -40,7 +40,7 @@ export default function Battle() {
     
 
     useEffect(()=>{
-        fetch(`http://127.0.0.1:5000/api/battle/${champ.id}/${challenger.id}`)
+        fetch(`http://3.23.92.242/api/battle/${champ.id}/${challenger.id}`)
             .then(res => res.json())
             .then(data => {
                 setstory(data);
@@ -114,7 +114,7 @@ export default function Battle() {
                 wins: champ.wins + 1
             })
 
-            fetch(`http://127.0.0.1:5000/api/characters/${champ.id}`, {
+            fetch(`http://3.23.92.242/api/characters/${champ.id}`, {
                 method: 'PUT',
                 headers: myHeaders,
                 body: formData
@@ -128,7 +128,7 @@ export default function Battle() {
                 champion: true
             })
 
-            fetch(`http://127.0.0.1:5000/api/characters/${challenger.id}`, {
+            fetch(`http://3.23.92.242/api/characters/${challenger.id}`, {
                 method: 'PUT',
                 headers: myHeaders,
                 body: formData
@@ -138,7 +138,7 @@ export default function Battle() {
                 champion: false
             })
 
-            fetch(`http://127.0.0.1:5000/api/characters/${champ.id}`, {
+            fetch(`http://3.23.92.242/api/characters/${champ.id}`, {
                 method: 'PUT',
                 headers: myHeaders,
                 body: formData2

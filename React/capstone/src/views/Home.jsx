@@ -9,7 +9,7 @@ export default function Home() {
    
     useEffect(() => {
       setLoader(true);
-      fetch(`http://127.0.0.1:5000/api/champ`)
+      fetch(`http://3.23.92.242/api/champ`)
           .then(res => res.json())
           .then(data => {
               console.log(data);

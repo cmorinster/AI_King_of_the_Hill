@@ -30,9 +30,9 @@ export default function HallOfFame() {
 useEffect(() => {
     (async function() {
        setLoader(true)
-       const hofData = await fetch(`http://127.0.0.1:5000/api/hof`)
+       const hofData = await fetch(`http://3.23.92.242/api/hof`)
          .then(resp => resp.json());
-       const championData = await fetch(`http://127.0.0.1:5000/api/characters/${hofData[1]['id']}`)
+       const championData = await fetch(`http://3.23.92.242/api/characters/${hofData[1]['id']}`)
        .then(resp => resp.json());
       console.log(hofData);
        setHofList(hofData);
@@ -55,7 +55,7 @@ useEffect(() => {
 
 function changeHero(heroId) {
     setLoader(true)
-    fetch(`http://127.0.0.1:5000/api/characters/${heroId}`)
+    fetch(`http://3.23.92.242/api/characters/${heroId}`)
     .then(resp => resp.json())
     .then((clickedChamp)=>{
     setChampion(clickedChamp);

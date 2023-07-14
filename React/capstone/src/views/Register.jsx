@@ -25,7 +25,7 @@ export default function Register({ flashMessage }) {
                 password
             })
 
-            fetch('http://127.0.0.1:5000/api/users', {
+            fetch('http://3.23.92.242/api/users', {
                 method: 'POST',
                 headers: myHeaders,
                 body: formData
