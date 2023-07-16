@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react'
 import useSWR from 'swr'
 import { useRef } from 'react';
 import PuffLoader from "react-spinners/PuffLoader";
+import { useNavigate } from 'react-router-dom';
 
-export default function Battle() {
+export default function Battle({ loggedIn, flashMessage }) {
     const [challenger, setChallenger] = useState({});
     const [champ, setChamp] = useState({});
     const [story, setstory] = useState({}); 
@@ -15,6 +16,15 @@ export default function Battle() {
     const [buttonChecker, setbuttonChecker] = useState(true);
     const [winner, setWinner] = useState(null);
     let characterCurrent = localStorage.getItem('charId');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!loggedIn){
+            flashMessage('You must be logged in to create a new character', 'danger');
+            navigate('/login');
+        }
+    })
+
     useEffect(() => {
         setLoader(true);
         fetch(`http://3.23.92.242/api/champ`)
@@ -151,6 +161,7 @@ export default function Battle() {
     const hasWinner = Boolean(story && winner);
     const winnerIsChamp = winner === "champion";
     const winnerStory = hasWinner? (winnerIsChamp ? story.story : story.story2):null;
+    const champCurrent = hasWinner? (winnerIsChamp ? champ.name : challenger.name):null;
   return (
 
     
@@ -236,7 +247,7 @@ export default function Battle() {
 
                  {(winnerStory) ? 
                 <>
-                 <h1>The tale of how {champ.name} was victorious</h1>
+                 <h1 className='the_tale'>The tale of how {champCurrent} was victorious</h1>
                  <p className="story">{winnerStory}</p> </>: null
                  
                  }

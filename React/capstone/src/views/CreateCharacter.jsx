@@ -6,6 +6,14 @@ import { useNavigate } from 'react-router-dom';
 export default function CreateCharacter({ loggedIn, flashMessage }) {
 
     const navigate = useNavigate();
+    useEffect(() => {
+        if (!loggedIn){
+            flashMessage('You must be logged in to create a new character', 'danger');
+            navigate('/login');
+        }
+    })
+
+    
     async function handleSubmit(e){
         e.preventDefault();
         let creature = e.target.creature.value;

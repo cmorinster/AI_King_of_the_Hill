@@ -44,7 +44,7 @@ function App() {
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
                     <Route path='/login' element={<Login flashMessage={flashMessage} logUserIn={setLoggedIn} />} />
                     <Route path='/create' element={<CreateCharacter flashMessage={flashMessage} loggedIn={loggedIn} />} />
-                    <Route path='/battle' element={<Battle/>} />
+                    <Route path='/battle' element={<Battle flashMessage={flashMessage} loggedIn={loggedIn}  />} />
                     <Route path='/hof' element={<HallOfFame/>} />
                     {/* <Route path='/characters' element={<MyCharacters flashMessage={flashMessage} loggedIn={loggedIn} />} />
                     <Route path='/characters/:characterId/edit' element={<EditCharacter flashMessage={flashMessage} loggedIn={loggedIn} />} />

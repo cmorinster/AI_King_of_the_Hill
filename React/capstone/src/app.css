@@ -119,61 +119,7 @@ h1{
 
 
 
-@media only screen and (max-width: 992px) {
 
-.frame{
-    height: 100%;
-    width: 100%;
-    position:relative;
-    margin-bottom: 0px;
-    margin-top: 5%;
-}
-
-.homeImg{ 
-    height: 70%;
-    width: 70%;
-    display: block;
-    margin: auto;
-    border-color:rgb(249, 251, 228) #67b9b8;
-    border-image:none;
-    border-radius: 0 0 0 0;
-    -moz-border-radius:0 0 0 0;
-    -webkit-border-radius:0 0 0 0;
-    border-style:solid;
-    border-width:2vh;
-}
-
-.crown{
-    height: 30%;
-    width: 30%;
-    margin:auto;
-    display: block;
-}
-
-.HomeButtons{
-    width: 100%;
-    height: 100%;
-    margin:auto;
-    position: relative;
-    margin-top: 2%;
-}
-
-.homeButton{
-   display: inline-block;
-   width: 20%;
-   margin: 6.33333%;
-   font-size: 100%;
-   padding: 3%;
-
-}
-
-.homeCard{
-    display: none;
-
-}
-
-}
-/* end of small screen */
     
 .homeCard{
     position: relative;
@@ -378,3 +324,116 @@ h1{
 .BattleLoading{
     margin-top: 3%;
 }
+
+@media only screen and (max-width: 992px) {
+
+    /*battle */
+    
+    .winner{
+        top: 15%;
+        left: 3%;
+        font-size: 80px;
+    
+    }
+    
+    .damage_lose{
+    
+        top: 15%;
+        left: 3%;
+        font-size: 80px;
+    }
+    
+    .damage{
+    
+        top: 5%;
+        left: 15%;
+        font-size: 140px;
+    }
+    
+    .the_tale{
+
+        font-size: 35px;
+    }
+    
+    .frame{
+        height: 100%;
+        width: 100%;
+        position:relative;
+        margin-bottom: 0px;
+        margin-top: 5%;
+    }
+    
+    .homeImg{ 
+        height: 70%;
+        width: 70%;
+        display: block;
+        margin: auto;
+        border-color:rgb(249, 251, 228) #67b9b8;
+        border-image:none;
+        border-radius: 0 0 0 0;
+        -moz-border-radius:0 0 0 0;
+        -webkit-border-radius:0 0 0 0;
+        border-style:solid;
+        border-width:2vh;
+    }
+    
+    .crown{
+        height: 30%;
+        width: 30%;
+        margin:auto;
+        display: block;
+    }
+    
+    .HomeButtons{
+        width: 100%;
+        height: 100%;
+        margin:auto;
+        position: relative;
+        margin-top: 2%;
+    }
+    
+    .homeButton{
+       display: inline-block;
+       width: 20%;
+       margin: 6.33333%;
+       font-size: 100%;
+       padding: 3%;
+    
+    }
+    
+    .homeCard{
+        display: none;
+    
+    }
+    
+    }
+    /* end of small screen */
+
+    @media only screen and (max-width: 768px) {
+        .winner{
+            top: 15%;
+            left: 5%;
+            font-size: 50px;
+        
+        }
+        
+        .damage_lose{
+        
+            top: 15%;
+            left: 5%;
+            font-size: 50px;
+        }
+        
+        .damage{
+        
+            top: 5%;
+            left: 15%;
+            font-size: 100px;
+        }
+
+        .the_tale{
+
+            font-size: 20px;
+            margin-bottom: 2%;
+        }
+    }
